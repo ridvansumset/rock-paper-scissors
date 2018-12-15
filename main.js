@@ -66,11 +66,11 @@ function showAiSelection(aiIndex, aiWon, tie = false) {
 	}
 
 	for (let i = 0; i < 3; i++) {
-		document.getElementById(i).classList.remove('winner');
-		document.getElementById(i).classList.remove('loser');
-		document.getElementById(i).classList.remove('tie');
+		document.getElementById('ai' + i).classList.remove('winner');
+		document.getElementById('ai' + i).classList.remove('loser');
+		document.getElementById('ai' + i).classList.remove('tie');
 		if (i === aiIndex) {
-			document.getElementById(i).classList.add(style);
+			document.getElementById('ai' + i).classList.add(style);
 		}
 	}
 }
