@@ -1,0 +1,85 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 25px;
+}
+
+.userWinnings { grid-area: header1; }
+.aiWinnings { grid-area: header2; }
+.tieWinnings { grid-area: main; }
+
+.score-container {
+	width: 40%;
+  	display: grid;
+  	grid-template-areas:
+    	'header1 header2'
+    	'main main';
+  	grid-gap: 1px;
+  	background-color: #333;
+  	border: solid 1px #333;
+  	margin: 25px auto;
+}
+
+.score-container > div {
+  	background-color: white;
+  	text-align: center;
+  	padding: 20px 0;
+  	font-size: 30px;
+}
+
+#main {
+	display: grid;
+  	grid-template-columns: auto auto auto auto;
+  	grid-row-gap: 10px;
+  	width: 40%;
+	height: 485px;
+	margin: 25px auto;
+}
+
+#user, #ai, #mid {
+	height: 485px;
+}
+
+#mid {
+	grid-column-start: 2;
+  	grid-column-end: 4;
+	background-color: white;
+}
+
+#user div, #ai div {
+	width: 200px;
+	height: 150px;
+	margin: 10px auto;
+	background-color: lightgrey;
+	cursor: pointer;
+}
+
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.transparent-border {
+	border: solid 3px transparent;
+}
+
+.tie {
+	border: solid 3px black;
+}
+
+.winner {
+	border: solid 3px lawngreen;
+}
+
+.loser {
+	border: solid 3px orangered;
+}
+
+.tie, .winner, .loser {
+	box-shadow: 3px 3px 3px #999;
+}
