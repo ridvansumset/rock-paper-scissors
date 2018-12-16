@@ -2,6 +2,7 @@
 // these are constant values unlike AI's values
 // AI's values will change by user's selection
 const rock = 0, paper = 1, scissor = 2;
+// something like `const user = {rock:0, paper:1....}` is not used because const object's properties are not const
 
 // user's items in HTML
 const user0 = document.getElementById('user0');
@@ -17,27 +18,28 @@ const tieWinnings = document.querySelector('.tieWinnings');
 // first elements represent rock
 // second elements represent paper
 // third elements represent scissor
-// only 1 array is used and it is decided by user's choice
+// only 1 array is used when user makes a choice
 const arrayForRock = [0, 1, -1];
 const arrayForPaper = [0, 1, 2];
 const arrayForScissor = [3, 1, 2];
 
 // scoreboard results
 var user_win_count = 0, ai_win_count = 0, tie_count = 0;
+
 var selected_item_val = 4; // initial value for selected item (not 0 because rock = 0)
 
 user0.addEventListener('click', function() {
-	selected_item_val = rock; // if chosen, selected item's val is 0
+	selected_item_val = rock; // if chosen, selected item's value is 0
 	select(selected_item_val);
 });
 
 user1.addEventListener('click', function() {
-	selected_item_val = paper; // if chosen, selected item's val is 1
+	selected_item_val = paper; // if chosen, selected item's value is 1
 	select(selected_item_val);
 });
 
 user2.addEventListener('click', function() {
-	selected_item_val = scissor; // if chosen, selected item's val is 2
+	selected_item_val = scissor; // if chosen, selected item's value is 2
 	select(selected_item_val);
 });
 
@@ -63,10 +65,13 @@ function showUserSelection(userIndex, userWon, tie = false) {
 			document.getElementById('user' + i).classList.add(style);
 		}
 	}
+
+	var result = style + ': ' + window['user' + userIndex].id; // reach global variable by using 'window'
+	return result;
 }
 
 // shows AI's selection by adding the right class
-function showAiSelection(aiIndex, aiWon, tie = false) {
+function showAISelection(aiIndex, aiWon, tie = false) {
 	var style = '';
 	if (tie) {
 		style = 'tie';
@@ -86,6 +91,9 @@ function showAiSelection(aiIndex, aiWon, tie = false) {
 			document.getElementById('ai' + i).classList.add(style);
 		}
 	}
+
+	var result = style + ': ' + window['ai' + aiIndex].id; // reach global variable by using 'window'
+	return result;
 }
 
 // increase winner's win count and highlight it
@@ -118,15 +126,21 @@ function whoIsWinner(userVal, aiVal, aiIndex) {
 	if (userVal > aiVal) {
 			highlightScoreboard('user');
 			showUserSelection(userVal, true);
-			showAiSelection(aiIndex, false);
+			showAISelection(aiIndex, false);
+
+			return 'User beats AI!';
 		} else if (userVal < aiVal) {
 			highlightScoreboard('ai');
 			showUserSelection(userVal, false);
-			showAiSelection(aiIndex, true);
+			showAISelection(aiIndex, true);
+
+			return 'AI beats User!';
 		} else {
 			highlightScoreboard('tie');
 			showUserSelection(userVal, false, true);
-			showAiSelection(aiIndex, false, true);
+			showAISelection(aiIndex, false, true);
+
+			return 'It\'s a Tie!';
 		}
 }
 
@@ -136,15 +150,21 @@ function select(itemVal) {
 		let rand = Math.floor(Math.random() * 3) - 1; // create random number btw -1 and 1 because arrayForRock has values btw that range
 		let index = arrayForRock.indexOf(rand); // find index of rand to show it on the page
 		whoIsWinner(itemVal, rand, index); // decide winner
+
+		return arrayForRock;
 	} else if (itemVal === paper) {
 		let rand = Math.floor(Math.random() * 3);
 		let index = arrayForPaper.indexOf(rand);
 		whoIsWinner(itemVal, rand, index);
+		
+		return arrayForPaper;
 	} else if (itemVal === scissor) {
 		let rand = Math.floor(Math.random() * 3) + 1;
 		let index = arrayForScissor.indexOf(rand);
 		whoIsWinner(itemVal, rand, index);
+		
+		return arrayForScissor;
 	} else {
-		alert('Unknown item selected!');
+		return [];
 	}
 }

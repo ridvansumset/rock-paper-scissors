@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Rock, Paper, Scissors!</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="shortcut icon" type="image/png" href="http://www.favicon.cc/logo3d/805435.png"/>
+  </head>
+  <body style='margin: 0 1em;'>
+    <div id='main'>
+      <h1>Rock, Paper, Scissors!<em>Game Tester</em></h1>
+    </div>
+
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <!-- main div from index.html -->
+    <!-- Have to add this div, otherwise document.getElement* methods will fail resulting the tests fail -->
+    <div id="main" style="display:none;">
+  		<div id="user">
+  			<p class="title">YOU</p>
+  			<div id="user0" class="transparent-border"><img src="img/rock.png"></div>
+  			<div id="user1" class="transparent-border"><img src="img/paper.png"></div>
+  			<div id="user2" class="transparent-border"><img src="img/scissor.png"></div>
+  		</div>
+
+  		<div id="mid">
+  			<div class="scoreboard">
+  			  <div class="userWinnings">You win: 0</div>
+  			  <div class="aiWinnings">AI wins: 0</div>
+  			  <div class="tieWinnings">Tie: 0</div>
+  			</div>
+  		</div>
+
+  		<div id="ai">
+  			<p class="title">AI</p>
+  			<div id="ai0" class="transparent-border"><img src="img/rock.png"></div>
+  			<div id="ai1" class="transparent-border"><img src="img/paper.png"></div>
+  			<div id="ai2" class="transparent-border"><img src="img/scissor.png"></div>
+  		</div>
+  	</div>
+    <!-- main div from index.html -->
+
+    <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+    <script src="main.js" data-cover></script>
+    <script src="test.js"></script>
+  </body>
+</html>
