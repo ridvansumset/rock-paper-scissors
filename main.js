@@ -147,7 +147,7 @@ function whoIsWinner(userVal, aiVal, aiIndex) {
 // check user's selection, create a selection for AI and decide winner
 function select(itemVal) {
 	if (itemVal === rock) {
-		let rand = Math.floor(Math.random() * 3) - 1; // create random number btw -1 and 1 because arrayForRock has values btw that range
+		let rand = Math.floor(Math.random() * 3) - 1; // create random number between -1 and 1 because arrayForRock has values between that range
 		let index = arrayForRock.indexOf(rand); // find index of rand to show it on the page
 		whoIsWinner(itemVal, rand, index); // decide winner
 
@@ -156,13 +156,13 @@ function select(itemVal) {
 		let rand = Math.floor(Math.random() * 3);
 		let index = arrayForPaper.indexOf(rand);
 		whoIsWinner(itemVal, rand, index);
-		
+
 		return arrayForPaper;
 	} else if (itemVal === scissor) {
 		let rand = Math.floor(Math.random() * 3) + 1;
 		let index = arrayForScissor.indexOf(rand);
 		whoIsWinner(itemVal, rand, index);
-		
+
 		return arrayForScissor;
 	} else {
 		return [];
