@@ -14,9 +14,9 @@ h1 {
 	margin-top: 15px;
 }
 
-.userWinnings { grid-area: header-left; }
-.aiWinnings { grid-area: header-right; }
-.tieWinnings { grid-area: footer; }
+.userWins { grid-area: header-left; }
+.aiWins { grid-area: header-right; }
+.tieWins { grid-area: footer; }
 
 .scoreboard {
 	width: 95%;
