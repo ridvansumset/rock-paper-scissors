@@ -3,13 +3,13 @@ const user0 = document.getElementById('user0'), user1 = document.getElementById(
 const userWins = document.querySelector('.userWins'), aiWins = document.querySelector('.aiWins'), tieWins = document.querySelector('.tieWins');
 var user_win_count = 0, ai_win_count = 0, tie_count = 0;
 
-user0.addEventListener('click', function() { getUserSelection(rock) });
-user1.addEventListener('click', function() { getUserSelection(paper) });
-user2.addEventListener('click', function() { getUserSelection(scissor) });
+user0.addEventListener('click', () => getUserSelection(rock));
+user1.addEventListener('click', () => getUserSelection(paper));
+user2.addEventListener('click', () => getUserSelection(scissor));
 
-function showUserAndAISelections(userIndex, userWon, aiIndex, tie = false) {
-	[].forEach.call(document.querySelectorAll('.item, .score-item'), function(elem) {
-		elem.classList.contains('score-item') ? elem.style.backgroundColor = 'white' : elem.classList.remove('winner', 'loser', 'tie');
+function showUserAndAISelectionsThenHighlightScoreboard(userIndex, userWon, aiIndex, tie = false) {
+	[].forEach.call(document.querySelectorAll('.item, .score-item'), function(element) {
+		element.classList.contains('score-item') ? element.style.backgroundColor = 'white' : element.classList.remove('winner', 'loser', 'tie');
 	});
 	if (tie) {
 		[].forEach.call(document.querySelectorAll('#user' + userIndex + ', ' + '#ai' + aiIndex), function(element) { element.classList.add('tie') });
@@ -33,11 +33,11 @@ function showUserAndAISelections(userIndex, userWon, aiIndex, tie = false) {
 
 function getWinner(userIndex, aiVal, aiIndex) {
 	if (userIndex > aiVal) {
-			return showUserAndAISelections(userIndex, true, aiIndex);
+			return showUserAndAISelectionsThenHighlightScoreboard(userIndex, true, aiIndex);
 		} else if (userIndex < aiVal) {
-			return showUserAndAISelections(userIndex, false, aiIndex);
+			return showUserAndAISelectionsThenHighlightScoreboard(userIndex, false, aiIndex);
 		} else {
-			return showUserAndAISelections(userIndex, false, aiIndex, true);
+			return showUserAndAISelectionsThenHighlightScoreboard(userIndex, false, aiIndex, true);
 		}
 }
 
