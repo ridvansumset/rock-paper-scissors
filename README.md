@@ -1,10 +1,6 @@
 # Rock Paper Scissors Game
 
-Items on the left is yours to choose and the ones on the right belong to AI.
-
-Just click one of your items and AI will respond immediately.
-
-There is scoreboard in the middle, so you can track your wins, AI's wins and ties.
+Items on the left is yours to choose and the ones on the right belong to your PC.
 
 ## How to Get & Play
 
